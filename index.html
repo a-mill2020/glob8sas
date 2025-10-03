@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Solutions Supplies Inc.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* -------------------------------------------------------------------
+        CUSTOM CSS FOR IMPRESSIVENESS (Animations & Styling)
+        ------------------------------------------------------------------- */
+
+        /* Custom Fade-In-Up animation (Replacing Framer Motion whileInView) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .is-in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section Animations (Replacing Framer Motion initial/animate) */
+        .hero-img-animated {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: hero-img-fade 1s forwards;
+        }
+        .hero-h1-animated {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: hero-h1-fade 1s forwards 0.2s;
+        }
+        @keyframes hero-img-fade {
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes hero-h1-fade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gradient Text for H1 (Impressiveness Suggestion) */
+        .hero-gradient-text {
+            background-image: linear-gradient(to right, #10b981, #065f46); /* Tailwind Emerald to Dark Green */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Enhanced Hover Card Effect (Impressiveness Suggestion) */
+        .hover-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* lg shadow */
+            border-color: #38a169; /* green-600 */
+        }
+
+        /* Simplified Star icon for reviews */
+        .star-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            fill: #f59e0b;
+            stroke: #f59e0b;
+            stroke-width: 0;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <div class="shipping-bar-container">
+        <p class="shipping-text">
+            <span>&starf; Nationwide Free Shipping On All Orders! &starf; </span>
+        </p>
+    </div>
+
+    <style>
+    /* --- CSS for the SLIDE-DOWN ANIMATION --- */
+
+    /* Define the animation keyframes */
+    @keyframes slideDown {
+        0% { transform: translateY(-100%); } /* Start: Completely off-screen above */
+        100% { transform: translateY(0); } /* End: In its normal position */
+    }
+
+    /* 1. Bar Container and Global Styling */
+    .shipping-bar-container {
+        width: 100%;
+        
+        /* Make it stick to the very top */
+        position: sticky; 
+        top: 0; 
+        z-index: 1000;
+        
+        /* Apply the animation: 1 second long, smooth easing, and starts immediately */
+        animation: slideDown 1s ease-out forwards;
+        
+        /* Background and Text Styles */
+        background-color: #38a169; 
+        color: white; 
+        padding: 10px 0;
+        text-align: center;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        
+        /* Initial state before animation starts (hidden above screen) */
+        transform: translateY(-100%); 
+    }
+
+    /* 2. Text Wrapper (Static and Centered) */
+    .shipping-text {
+        margin: 0 auto; 
+        line-height: 1.2;
+        white-space: nowrap;
+        display: inline-block;
+    }
+    </style>
+    <div id="app-container" class="bg-white text-gray-800 font-sans">
+        
+        <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-green-0 to-white">
+            <video autoplay loop muted playsinline style="width: 30%; height: auto;">
+    <source src="vfile.mp4" type="video/mp4">
+</video>
+            <p class="mt-10 text-lg md:text-xl text-green-600 max-w-2xl">
+Caring for Our Community Since 1997 – Providing Patients with Trusted Medical Supplies and Devices, Always Covered by Major Insurances.      </p>
+            <button class="transition duration-300 ease-in-out transform hover:scale-105 mt-10 bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-3xl shadow-xl hover:shadow-2xl">
+                Get Qualified
+            </button>
+        </section>
+
+        <section id="insurances" class="py-16 px-6 bg-white text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-green-800 animate-on-scroll">
+                Insurance Partners
+            </h2>
+            <div id="insurance-logos" class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
+            </div>
+        </section>
+
+        <section id="values" class="py-20 px-6 bg-green-50 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-green-800 animate-on-scroll">
+                Our Core Values
+            </h2>
+            <div class="mt-10 grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-green-100 animate-on-scroll hover-card">
+                    <h3 class="text-xl font-bold text-green-700">Quality</h3>
+                    <p class="mt-2 text-gray-600">We choose and provide only reliable, effective medical supplies that patients can depend on.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-green-100 animate-on-scroll hover-card" data-delay="0.2">
+                    <h3 class="text-xl font-bold text-green-700">Accessibility</h3>
+                    <p class="mt-2 text-gray-600">We work with all major insurances and keep the process simple so care is never out of reach.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-green-100 animate-on-scroll hover-card" data-delay="0.4">
+                    <h3 class="text-xl font-bold text-green-700">Respect</h3>
+                    <p class="mt-2 text-gray-600">We treat every patient and family with fairness, dignity, and compassion.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mission" class="py-20 px-6 bg-white text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-green-800 animate-on-scroll">
+                Our Mission
+            </h2>
+            <p class="mt-6 max-w-4xl mx-auto text-green-700 leading-relaxed animate-on-scroll" data-delay="0.2">
+                At Global Solutions Supplies Inc., we are dedicated to empowering patients by providing access to high-quality, medically necessary equipment and supplies. With a commitment to compassionate care and integrity, our mission is to foster trusting relationships with patients, families, physicians, and healthcare providers, making the journey toward better health as smooth as possible.
+            </p>
+        </section>
+
+        <section id="how-it-works" class="py-20 px-6 bg-green-50 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-green-800 animate-on-scroll">
+                How It Works
+            </h2>
+            <div class="mt-10 grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-green-100 animate-on-scroll hover-card">
+                    <h3 class="text-xl font-bold text-green-700">Step 1</h3>
+                    <p class="mt-2 text-gray-600">Choose a product line and provide your insurance information.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-green-100 animate-on-scroll hover-card" data-delay="0.2">
+                    <h3 class="text-xl font-bold text-green-700">Step 2</h3>
+                    <p class="mt-2 text-gray-600">We verify your coverage and submit all required paperwork on your behalf.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-green-100 animate-on-scroll hover-card" data-delay="0.4">
+                    <h3 class="text-xl font-bold text-green-700">Step 3</h3>
+                    <p class="mt-2 text-gray-600">Choose from the curated supplies covered by your insurance.</p>
+                </div>
+            </div>
+            <button class="transition duration-300 ease-in-out transform hover:scale-105 mt-10 bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-3xl shadow-xl hover:shadow-2xl">
+                Let's Get Started
+            </button>
+        </section>
+
+        <section id="reviews" class="py-20 px-6 bg-white text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-green-800 animate-on-scroll">
+                What Our Customers Say
+            </h2>
+            <div id="reviews-container" class="mt-10 grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            </div>
+        </section>
+
+        <section id="faq" class="py-20 px-6 bg-green-50 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-green-800 animate-on-scroll">
+                Frequently Asked Questions
+            </h2>
+            <div id="faq-container" class="mt-10 max-w-4xl mx-auto text-left space-y-6">
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 px-6 bg-white text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-green-800 animate-on-scroll">
+                Get in Touch with Us
+            </h2>
+            <div class="mt-8 max-w-3xl mx-auto text-green-700 space-y-3 animate-on-scroll" data-delay="0.2">
+                <p><strong>📞 Phone:</strong> 312-446-8832</p>
+                <p><strong>📧 Email:</strong> globalsuppliesinc88@gmail.com</p>
+                <p><strong>📍 Address:</strong> 5875 N LINCOLN AVE STE LL59, CHICAGO, IL 60659-4674</p>
+            </div>
+            <div class="mt-10 w-full max-w-4xl mx-auto h-96 rounded-2xl overflow-hidden shadow-lg animate-on-scroll" data-delay="0.4">
+                <iframe
+                    src="https://maps.google.com/maps?q=5875%20N%20LINCOLN%20AVE%20STE%20LL59,%20CHICAGO,%20IL%2060659-4674&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="100%"
+                    style="border: 0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                ></iframe>
+            </div>
+        </section>
+
+        <footer class="py-10 bg-green-700 text-white text-center">
+            <p>© 2025 Global Solutions Supplies Inc. | All Rights Reserved</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- Data ---
+        const data = {
+            reviews: [
+                { name: "Sarah M.", text: "Amazing service, and they handled my insurance smoothly!", rating: 5 },
+                { name: "James P.", text: "High quality medical supplies at affordable prices.", rating: 5 },
+                { name: "Linda K.", text: "Very professional and reliable!", rating: 4 },
+            ],
+            faqs: [
+                { q: "How can I track my order?", a: "You can track your order through our customer portal or by contacting support." },
+                { q: "What if I have issues with the product I received?", a: "Reach out to us immediately and we’ll resolve it with replacements or returns." },
+                { q: "How do I sign the consent form and approve my benefits?", a: "We provide a simple e-signature process for quick approval." },
+                { q: "Can I update my shipping address after placing an order?", a: "Yes, contact support before your order is shipped." },
+            ],
+            insurances: [
+                { name: "Medicare", logo: "https://advancedphysicalmedicinepc.com/wp-content/uploads/2025/04/Insurance-logos-1-1024x399.png" },
+                { name: "Aetna", logo: "https://logos-world.net/wp-content/uploads/2021/12/Aetna-Logo.jpg" },
+                { name: "United Healthcare", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/UnitedHealthcare_%28logo%29.svg/2560px-UnitedHealthcare_%28logo%29.svg.png" },
+                { name: "Cigna", logo: "https://iconlogovector.com/uploads/images/2025/04/lg-67f31ffb1d111-Cigna.webp" },
+                { name: "Anthem", logo: "https://logos-world.net/wp-content/uploads/2021/02/Anthem-Inc.-Logo.png" },
+            ]
+        };
+
+        // Helper function to create the star icon SVG
+        function createStarIcon() {
+            const star = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            star.classList.add("star-icon");
+            star.setAttribute("viewBox", "0 0 24 24");
+            star.setAttribute("fill", "currentColor");
+            star.innerHTML = '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 18.25l-6.18 3.27L7 14.14l-5-4.87 6.91-1.01L12 2z"/>';
+            return star;
+        }
+
+        // --- DOM Manipulation Functions ---
+
+        // 1. Render Insurance Logos (NEW)
+        function renderInsurances() {
+            const container = document.getElementById('insurance-logos');
+            if (!container) return;
+
+            data.insurances.forEach((insurance, index) => {
+                const card = document.createElement('div');
+                // Fixed card size, flex for vertical centering, padding, white background
+                card.classList.add('flex', 'flex-col', 'items-center', 'justify-center', 'h-28', 'sm:h-32', 'p-4', 'bg-white', 'rounded-xl', 'shadow-lg', 'border', 'border-gray-100', 'animate-on-scroll', 'hover-card');
+                card.setAttribute('data-delay', (index * 0.1).toFixed(1)); // Subtle stagger
+
+                const img = document.createElement('img');
+                img.src = insurance.logo;
+                img.alt = `${insurance.name} Logo`;
+                // Object-fit contain ensures the image fits without cropping in a max-height container
+                img.classList.add('max-h-full', 'w-auto', 'object-contain', 'p-1');
+                img.setAttribute('loading', 'lazy');
+
+                card.appendChild(img);
+                container.appendChild(card);
+            });
+        }
+
+        // 2. Render Reviews
+        function renderReviews() {
+            const reviewsContainer = document.getElementById('reviews-container');
+            if (!reviewsContainer) return;
+
+            data.reviews.forEach((review, index) => {
+                const reviewElement = document.createElement('div');
+                reviewElement.classList.add('bg-white', 'p-6', 'rounded-2xl', 'shadow-md', 'border', 'border-green-100', 'animate-on-scroll', 'hover-card');
+                reviewElement.setAttribute('data-delay', (index * 0.2).toFixed(1));
+
+                const starsDiv = document.createElement('div');
+                starsDiv.classList.add('flex', 'justify-center', 'mb-2');
+                for (let i = 0; i < review.rating; i++) {
+                    starsDiv.appendChild(createStarIcon());
+                }
+
+                reviewElement.appendChild(starsDiv);
+                reviewElement.innerHTML += `
+                    <p class="italic text-gray-700">“${review.text}”</p>
+                    <h3 class="mt-4 font-semibold text-green-800">- ${review.name}</h3>
+                `;
+                reviewsContainer.appendChild(reviewElement);
+            });
+        }
+
+        // 3. Render FAQs (Implemented as Accordion)
+        function renderFaqs() {
+            const faqContainer = document.getElementById('faq-container');
+            if (!faqContainer) return;
+
+            data.faqs.forEach((faq, index) => {
+                const faqElement = document.createElement('div');
+                faqElement.classList.add('bg-white', 'p-6', 'rounded-2xl', 'shadow-md', 'border', 'border-green-100', 'animate-on-scroll', 'hover-card', 'cursor-pointer');
+                faqElement.setAttribute('data-delay', (index * 0.2).toFixed(1));
+
+                // Question Header
+                const questionHeader = document.createElement('h3');
+                questionHeader.classList.add('text-lg', 'font-semibold', 'text-green-700', 'flex', 'justify-between', 'items-center');
+                questionHeader.innerHTML = `${faq.q} <span class="text-xl text-green-600 transition-transform duration-300 toggle-icon">+</span>`;
+
+                // Answer Content (initially hidden)
+                const answerContent = document.createElement('p');
+                answerContent.classList.add('mt-2', 'text-gray-600', 'faq-answer', 'hidden');
+                answerContent.textContent = faq.a;
+
+                // Click Handler for Accordion Toggle
+                questionHeader.onclick = () => {
+                    const answer = faqElement.querySelector('.faq-answer');
+                    const icon = faqElement.querySelector('.toggle-icon');
+
+                    // Check if already open (hidden)
+                    const isOpen = !answer.classList.contains('hidden');
+
+                    // Close all other open FAQs
+                    document.querySelectorAll('.faq-answer').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.toggle-icon').forEach(el => el.textContent = '+');
+
+                    // Toggle the clicked one
+                    if (!isOpen) {
+                        answer.classList.remove('hidden');
+                        icon.textContent = '−';
+                    }
+                };
+
+                faqElement.appendChild(questionHeader);
+                faqElement.appendChild(answerContent);
+                faqContainer.appendChild(faqElement);
+            });
+        }
+
+        // --- Intersection Observer (Replacing Framer Motion whileInView) ---
+
+        function setupScrollAnimations() {
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        // Safely get and parse delay, default to 0 if not present
+                        const delay = parseFloat(element.getAttribute('data-delay')) || 0;
+
+                        // Apply the animation class after a delay to mimic the staggered effect
+                        setTimeout(() => {
+                            element.classList.add('is-in-view');
+                        }, delay * 1000);
+
+                        observer.unobserve(element);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            });
+
+            elementsToAnimate.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Render all dynamic content
+            renderInsurances();
+            renderReviews();
+            renderFaqs();
+
+            // 2. Setup the scroll-in-view animation logic
+            setupScrollAnimations();
+
+            // 3. Update the footer year
+            const footerYear = document.querySelector('footer p');
+            footerYear.textContent = `© ${new Date().getFullYear()} Global Solutions Supplies Inc. | All Rights Reserved`;
+        });
+
+    </script>
+</body>
+</html>
